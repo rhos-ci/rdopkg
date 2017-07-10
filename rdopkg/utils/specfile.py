@@ -595,7 +595,7 @@ class Spec(object):
 
     def get_last_changelog_entry(self, strip=False):
         changelog = ''
-        r = re.split(r"%changelog\n", self.txt, flags=re.I)
+        r = re.split("%changelog\n", self.txt, flags=re.I)
         if len(r) > 2:
             raise exception.MultipleChangelog()
         if len(r) == 2:

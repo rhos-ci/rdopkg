@@ -338,8 +338,8 @@ def test_get_last_changelog_entry_1_case_insensitive():
 
 
 def test_get_last_changelog_entry_multiple_sections():
-    # with pytest.raises(exception.MultipleChangelog):
-    txt = 'Version: 1.2.3\n\n'
-    spec = specfile.Spec(txt=txt + r'%changelog\n* 2017-01-01\n- foo1\n\n%changelog\nbar\n')  # noqa
-    r = spec.get_last_changelog_entry()
-    assert True, r
+    with pytest.raises(exception.MultipleChangelog):
+        txt = 'Version: 1.2.3\n\n'
+        spec = specfile.Spec(txt=txt + '%changelog\n* 2017-01-01\n- foo1\n\n%changelog\nbar\n')  # noqa
+        r = spec.get_last_changelog_entry()
+        assert False, r
